@@ -15,7 +15,7 @@ source:
     - patch/0003-ffmpeg-8-compat.patch
 
 build:
-  number: 0
+  number: 1
   skip:
     - win
 
