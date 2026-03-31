@@ -15,7 +15,7 @@ source:
     - patch/0003-ffmpeg-8-compat.patch
 
 build:
-  number: 1
+  number: 2
   skip:
     - win
 
@@ -27,9 +27,12 @@ requirements:
     - cmake
     - make
     - pkg-config
-    - python
-    - pip
-    - setuptools
+    - if: build_platform != target_platform
+      then:
+        - python
+        - cross-python_${{ target_platform }}
+        - pip
+        - numpy
   host:
     - python
     - pip
