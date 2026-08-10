@@ -22,7 +22,7 @@
      // LOG(INFO) << "find best stream: " << st_nb;
      CHECK_GE(st_nb, 0) << "ERROR cannot find video stream with wanted index: " << stream_nb;
      // initialize the mem for codec context
-@@ -554,9 +554,12 @@
+@@ -554,10 +554,14 @@
      if (rotate && *rotate->value && strcmp(rotate->value, "0"))
          theta = atof(rotate->value);
  
@@ -38,3 +38,16 @@
  
      theta = std::fmod(theta, 360);
      if(theta < 0) theta += 360;
+ 
+--- src/video/ffmpeg/filter_graph.cc
++++ src/video/ffmpeg/filter_graph.cc
+@@ -70,7 +70,8 @@
+ 	// av_free(buffersink_params);
+     // LOG(INFO) << "create filter sink";
+     // CHECK_GE(av_opt_set_bin(buffersink_ctx_, "pix_fmts", (uint8_t *)&pix_fmts, sizeof(AV_PIX_FMT_RGB24), AV_OPT_SEARCH_CHILDREN), 0) << "Set bin error";
+-    CHECK_GE(av_opt_set_int_list(buffersink_ctx_, "pix_fmts", pix_fmts, AV_PIX_FMT_NONE, AV_OPT_SEARCH_CHILDREN), 0) << "Set output pixel format error.";
++    CHECK_GE(av_opt_set_array(buffersink_ctx_, "pixel_formats", AV_OPT_SEARCH_CHILDREN,
++                0, 1, AV_OPT_TYPE_PIXEL_FMT, pix_fmts), 0) << "Set output pixel format error.";
+ 
+     // LOG(INFO) << "create filter set opt";
+     /* Endpoints for the filter graph. */
