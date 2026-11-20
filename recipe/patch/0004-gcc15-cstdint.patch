@@ -1,0 +1,12 @@
+diff --git src/sampler/sampler_interface.h src/sampler/sampler_interface.h
+index 7444449..93102ec 100644
+--- src/sampler/sampler_interface.h
++++ src/sampler/sampler_interface.h
+@@ -7,6 +7,7 @@
+ #ifndef DECORD_SAMPLER_SAMPLER_INTERFACE_H_
+ #define DECORD_SAMPLER_SAMPLER_INTERFACE_H_
+ 
++#include <cstdint>
+ #include <memory>
+ #include <vector>
+ #include <utility>

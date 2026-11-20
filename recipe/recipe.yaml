@@ -13,9 +13,10 @@ source:
     - patch/0001-use-conda-includes-and-disable-audio.patch
     - patch/0002-update-for-dlpack-1.0.patch
     - patch/0003-ffmpeg-8-compat.patch
+    - patch/0004-gcc15-cstdint.patch
 
 build:
-  number: 3
+  number: 4
   skip:
     - win
 
